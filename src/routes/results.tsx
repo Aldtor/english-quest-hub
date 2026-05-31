@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import confetti from "canvas-confetti";
 import { motion } from "framer-motion";
+import { Trophy, RotateCcw, LayoutGrid, Check, X } from "lucide-react";
 import { getCategory } from "@/lib/questions";
 
 interface Search {
@@ -18,19 +19,19 @@ export const Route = createFileRoute("/results")({
   }),
   head: () => ({
     meta: [
-      { title: "The Verdict — EnglishQuest" },
-      { name: "description", content: "Your reading mark." },
+      { title: "Your results — EnglishQuest" },
+      { name: "description", content: "Quiz results." },
     ],
   }),
   component: Results,
 });
 
 function message(p: number) {
-  if (p === 100) return "Faultless. The page is yours.";
-  if (p >= 80) return "Outstanding — a clear, careful read.";
-  if (p >= 60) return "Solid. A little more, and you'll be there.";
-  if (p >= 40) return "A good start. Return tomorrow.";
-  return "Keep at it — every reading sharpens the next.";
+  if (p === 100) return "Perfect. Couldn't have gone better.";
+  if (p >= 80) return "Excellent — you're on a roll.";
+  if (p >= 60) return "Solid effort. Almost there.";
+  if (p >= 40) return "Good start. Keep going.";
+  return "Every attempt makes the next one sharper.";
 }
 
 function Results() {
@@ -41,10 +42,9 @@ function Results() {
   useEffect(() => {
     if (percent >= 80) {
       const end = Date.now() + 800;
-      const colors = ["#1c1917", "#57534e", "#a8a29e", "#e7e5e4"];
       (function frame() {
-        confetti({ particleCount: 4, angle: 60, spread: 70, origin: { x: 0 }, colors });
-        confetti({ particleCount: 4, angle: 120, spread: 70, origin: { x: 1 }, colors });
+        confetti({ particleCount: 5, angle: 60, spread: 70, origin: { x: 0 } });
+        confetti({ particleCount: 5, angle: 120, spread: 70, origin: { x: 1 } });
         if (Date.now() < end) requestAnimationFrame(frame);
       })();
     }
@@ -56,39 +56,38 @@ function Results() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
+        className="overflow-hidden rounded-3xl border border-foreground/10 bg-card p-8 shadow-soft sm:p-12"
       >
-        <div className="border-y border-foreground/30 py-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground flex items-center justify-between">
-          <span>The Verdict</span>
-          <span>{cat?.name ?? "Practice"}</span>
-        </div>
-
-        <div className="py-12 text-center">
-          <p className="small-caps text-xs text-muted-foreground">Your mark</p>
-          <div className="mt-3 font-display text-[clamp(7rem,22vw,12rem)] leading-[0.85] num-tabular">
-            {percent}<span className="text-5xl italic text-muted-foreground">%</span>
+        <div className="text-center">
+          <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-foreground text-background">
+            <Trophy className="h-8 w-8" />
           </div>
-          <p className="mt-4 serif-italic text-2xl">{message(percent)}</p>
+          <p className="mt-6 text-xs font-medium uppercase tracking-wider text-muted-foreground">{cat?.name ?? "Quiz"} · complete</p>
+          <div className="mt-3 font-display text-[clamp(5rem,18vw,9rem)] font-semibold leading-[0.9] tracking-[-0.04em] num-tabular">
+            {percent}<span className="text-4xl text-muted-foreground">%</span>
+          </div>
+          <p className="mt-3 text-lg font-medium">{message(percent)}</p>
         </div>
 
-        <div className="grid grid-cols-3 divide-x divide-foreground/15 border-y border-foreground/15">
+        <div className="mt-10 grid grid-cols-3 gap-3">
           <Cell label="Score" value={`${correct}/${total}`} />
-          <Cell label="Correct" value={String(correct)} />
-          <Cell label="Missed" value={String(total - correct)} />
+          <Cell label="Correct" value={String(correct)} icon={<Check className="h-3.5 w-3.5 text-success" />} />
+          <Cell label="Missed" value={String(total - correct)} icon={<X className="h-3.5 w-3.5 text-destructive" />} />
         </div>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Link
             to="/quiz/$category"
             params={{ category }}
-            className="inline-flex flex-1 items-center justify-center border border-foreground bg-foreground px-6 py-3 text-sm text-background transition-colors hover:bg-background hover:text-foreground"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background"
           >
-            Read it again
+            <RotateCcw className="h-4 w-4" /> Try again
           </Link>
           <Link
             to="/practice"
-            className="inline-flex flex-1 items-center justify-center border border-foreground/30 px-6 py-3 text-sm transition-colors hover:bg-foreground hover:text-background"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-foreground/20 bg-background px-6 py-3 text-sm font-medium hover:bg-muted"
           >
-            Back to the library
+            <LayoutGrid className="h-4 w-4" /> All topics
           </Link>
         </div>
       </motion.div>
@@ -96,11 +95,11 @@ function Results() {
   );
 }
 
-function Cell({ label, value }: { label: string; value: string }) {
+function Cell({ label, value, icon }: { label: string; value: string; icon?: React.ReactNode }) {
   return (
-    <div className="px-4 py-5 text-center">
-      <div className="small-caps text-[10px] text-muted-foreground">{label}</div>
-      <div className="mt-2 font-display text-3xl num-tabular">{value}</div>
+    <div className="rounded-xl border border-foreground/10 bg-background px-4 py-3 text-center">
+      <div className="flex items-center justify-center gap-1.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">{icon}{label}</div>
+      <div className="mt-1 font-display text-2xl font-semibold tracking-tight num-tabular">{value}</div>
     </div>
   );
 }
