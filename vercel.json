@@ -1,6 +1,3 @@
 {
-  "buildCommand": "NITRO_PRESET=vercel vite build",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
+  "buildCommand": "NITRO_PRESET=vercel vite build"
 }
