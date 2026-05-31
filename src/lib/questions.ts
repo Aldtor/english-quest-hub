@@ -88,14 +88,14 @@ const reading: Question[] = [
 ];
 
 export const categories: Category[] = [
-  { slug: "grammar", name: "Grammar", description: "Master the rules that shape every sentence.", icon: "BookOpen", accent: "from-blue-500 to-indigo-500", questions: grammar },
-  { slug: "vocabulary", name: "Vocabulary", description: "Expand your word power with curated picks.", icon: "Sparkles", accent: "from-purple-500 to-fuchsia-500", questions: vocabulary },
-  { slug: "synonyms", name: "Synonyms", description: "Find the perfect word with similar meaning.", icon: "ArrowRightLeft", accent: "from-cyan-500 to-blue-500", questions: synonyms },
-  { slug: "antonyms", name: "Antonyms", description: "Identify opposites and sharpen contrast.", icon: "Shuffle", accent: "from-pink-500 to-rose-500", questions: antonyms },
-  { slug: "fill-blanks", name: "Fill in the Blanks", description: "Complete sentences with the right word.", icon: "PenLine", accent: "from-amber-500 to-orange-500", questions: fillBlanks },
-  { slug: "sentence-correction", name: "Sentence Correction", description: "Spot and fix grammatical errors.", icon: "CheckCircle2", accent: "from-emerald-500 to-teal-500", questions: sentenceCorrection },
-  { slug: "reading", name: "Reading Comprehension", description: "Read passages and answer thoughtfully.", icon: "BookText", accent: "from-violet-500 to-purple-500", questions: reading },
-  { slug: "mixed", name: "Mixed Practice", description: "A random blend from every category.", icon: "Layers", accent: "from-slate-600 to-slate-800", questions: [] },
+  { slug: "grammar", name: "Grammar", description: "Master the rules that shape every sentence.", icon: "BookMarked", accent: "from-stone-700 to-stone-900", questions: grammar },
+  { slug: "vocabulary", name: "Vocabulary", description: "Expand your word power with curated picks.", icon: "Feather", accent: "from-stone-700 to-stone-900", questions: vocabulary },
+  { slug: "synonyms", name: "Synonyms", description: "Find the perfect word with similar meaning.", icon: "ArrowLeftRight", accent: "from-stone-700 to-stone-900", questions: synonyms },
+  { slug: "antonyms", name: "Antonyms", description: "Identify opposites and sharpen contrast.", icon: "Repeat", accent: "from-stone-700 to-stone-900", questions: antonyms },
+  { slug: "fill-blanks", name: "Fill the Blanks", description: "Complete sentences with the right word.", icon: "PenTool", accent: "from-stone-700 to-stone-900", questions: fillBlanks },
+  { slug: "sentence-correction", name: "Sentence Correction", description: "Spot and fix grammatical errors.", icon: "SpellCheck", accent: "from-stone-700 to-stone-900", questions: sentenceCorrection },
+  { slug: "reading", name: "Reading Comprehension", description: "Read passages and answer thoughtfully.", icon: "ScrollText", accent: "from-stone-700 to-stone-900", questions: reading },
+  { slug: "mixed", name: "Mixed Practice", description: "A random blend from every category.", icon: "Library", accent: "from-stone-700 to-stone-900", questions: [] },
 ];
 
 export function getCategory(slug: string): Category | undefined {

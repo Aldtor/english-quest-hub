@@ -1,38 +1,38 @@
 import { Link } from "@tanstack/react-router";
-import { GraduationCap } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-border/60 bg-card/40">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
-        <div className="md:col-span-2">
-          <div className="flex items-center gap-2 font-display text-lg font-bold">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-brand text-primary-foreground">
-              <GraduationCap className="h-5 w-5" />
-            </span>
-            English<span className="text-gradient-brand">Quest</span>
+    <footer className="mt-24 border-t border-foreground/15">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <p className="small-caps text-xs text-muted-foreground">A daily reader for the English language</p>
+            <h3 className="mt-3 font-display text-4xl leading-tight">
+              English<span className="italic">Quest</span>
+            </h3>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+              No accounts. No tracking. No noise. Just a quiet place to read, answer, and improve — one question at a time.
+            </p>
           </div>
-          <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-            A premium, frontend-only English practice platform. Build fluency one question at a time.
-          </p>
+          <div className="md:col-span-3">
+            <h4 className="small-caps text-xs text-muted-foreground">Sections</h4>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li><Link to="/practice" className="ink-link">Practice</Link></li>
+              <li><Link to="/daily" className="ink-link">Daily Challenge</Link></li>
+              <li><Link to="/about" className="ink-link">About</Link></li>
+            </ul>
+          </div>
+          <div className="md:col-span-3">
+            <h4 className="small-caps text-xs text-muted-foreground">Colophon</h4>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Set in <span className="serif-italic">Instrument Serif</span> &amp; Work Sans. Built with React and Tailwind. Stored in your browser, never elsewhere.
+            </p>
+          </div>
         </div>
-        <div>
-          <h4 className="text-sm font-semibold">Explore</h4>
-          <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            <li><Link to="/practice" className="hover:text-foreground">Practice</Link></li>
-            <li><Link to="/daily" className="hover:text-foreground">Daily Challenge</Link></li>
-            <li><Link to="/about" className="hover:text-foreground">About</Link></li>
-          </ul>
+        <div className="mt-12 flex flex-col items-start justify-between gap-2 border-t border-foreground/15 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
+          <span>№ {new Date().getFullYear()} — Vol. I · Published continuously.</span>
+          <span className="serif-italic">Habent sua fata libelli.</span>
         </div>
-        <div>
-          <h4 className="text-sm font-semibold">Made with</h4>
-          <p className="mt-3 text-sm text-muted-foreground">
-            React · TypeScript · Tailwind. No backend, no signup, all yours.
-          </p>
-        </div>
-      </div>
-      <div className="border-t border-border/60 py-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} EnglishQuest. Crafted for learners everywhere.
       </div>
     </footer>
   );
