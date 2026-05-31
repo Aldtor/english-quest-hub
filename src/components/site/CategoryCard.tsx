@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { Icon } from "./Icon";
 import type { Category } from "@/lib/questions";
 
@@ -16,30 +17,28 @@ export function CategoryCard({ category, completions = 0, index = 0 }: { categor
       <Link
         to="/quiz/$category"
         params={{ category: category.slug }}
-        className="group relative flex h-full flex-col border border-foreground/15 bg-card p-6 transition-colors hover:bg-foreground hover:text-background"
+        className="group relative flex h-full flex-col rounded-2xl border border-foreground/10 bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-foreground/30 hover:shadow-soft"
       >
-        <div className="flex items-baseline justify-between">
-          <span className="font-display text-xl italic opacity-60">№ {num}</span>
-          <Icon name={category.icon} className="h-5 w-5 stroke-[1.4]" />
-        </div>
-        <hr className="my-5 border-t border-current opacity-25" />
-        <h3 className="font-display text-3xl leading-[1.05]">{category.name}</h3>
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground group-hover:text-background/75">
-          {category.description}
-        </p>
-        <div className="mt-auto flex items-end justify-between pt-8">
-          <div className="text-xs">
-            <div className="small-caps opacity-60">Entries</div>
-            <div className="font-display text-2xl leading-none">{count}</div>
+        <div className="flex items-start justify-between">
+          <div className="grid h-11 w-11 place-items-center rounded-xl bg-muted text-foreground transition-colors group-hover:bg-foreground group-hover:text-background">
+            <Icon name={category.icon} className="h-5 w-5 stroke-[1.6]" />
           </div>
-          {completions > 0 && (
-            <div className="text-right text-xs">
-              <div className="small-caps opacity-60">Read</div>
-              <div className="font-display text-2xl leading-none italic">×{completions}</div>
-            </div>
-          )}
-          <span className="serif-italic text-sm underline underline-offset-4 decoration-current/40 group-hover:decoration-current">
-            Open →
+          <span className="font-mono text-xs text-muted-foreground">{num}</span>
+        </div>
+        <h3 className="mt-5 font-display text-xl font-semibold tracking-[-0.02em]">{category.name}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{category.description}</p>
+        <div className="mt-auto flex items-end justify-between pt-6">
+          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <span>{count} questions</span>
+            {completions > 0 && (
+              <>
+                <span className="text-foreground/20">·</span>
+                <span className="font-medium text-secondary">×{completions} done</span>
+              </>
+            )}
+          </div>
+          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-foreground text-background opacity-0 transition-opacity group-hover:opacity-100">
+            <ArrowUpRight className="h-3.5 w-3.5" />
           </span>
         </div>
       </Link>

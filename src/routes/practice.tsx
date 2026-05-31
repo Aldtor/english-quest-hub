@@ -10,7 +10,7 @@ export const Route = createFileRoute("/practice")({
   head: () => ({
     meta: [
       { title: "Practice — EnglishQuest" },
-      { name: "description", content: "Choose a section of the book and begin reading." },
+      { name: "description", content: "Pick a topic and start practicing." },
     ],
   }),
   component: Practice,
@@ -33,34 +33,31 @@ function Practice() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-      <div className="flex items-baseline justify-between border-b border-foreground/20 pb-5">
-        <div>
-          <p className="small-caps text-xs text-muted-foreground">Section II · The Library</p>
-          <h1 className="mt-2 font-display text-5xl sm:text-6xl">
-            Choose your <span className="italic">practice.</span>
-          </h1>
-        </div>
-        <p className="hidden serif-italic text-sm text-muted-foreground sm:block">Eight sections, one quiet rhythm.</p>
+      <div className="max-w-2xl">
+        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Practice</p>
+        <h1 className="mt-3 font-display text-5xl font-semibold leading-[1.02] tracking-[-0.03em] sm:text-6xl">
+          Pick a <span className="text-secondary">topic.</span>
+        </h1>
+        <p className="mt-4 text-base text-muted-foreground sm:text-lg">Eight focused topics. Choose one, set the pace, build the habit.</p>
       </div>
 
-      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="relative max-w-md flex-1">
-          <Search className="absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="relative flex-1">
+          <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Search the index…"
-            className="w-full border-0 border-b border-foreground/30 bg-transparent py-3 pl-7 pr-4 text-sm placeholder:italic placeholder:text-muted-foreground/70 outline-none focus:border-foreground"
+            placeholder="Search topics…"
+            className="w-full rounded-full border border-foreground/15 bg-card py-3 pl-11 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
           />
         </div>
-        <div className="flex items-center gap-1">
-          <span className="small-caps mr-2 text-xs text-muted-foreground">Level</span>
+        <div className="flex items-center gap-1 rounded-full border border-foreground/15 bg-card p-1">
           {difficulties.map((d) => (
             <button
               key={d}
               onClick={() => setDiff(d)}
               className={cn(
-                "px-3 py-1.5 text-xs transition-colors",
+                "rounded-full px-4 py-1.5 text-xs font-medium transition-colors",
                 diff === d ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
               )}
             >
@@ -70,13 +67,13 @@ function Practice() {
         </div>
       </div>
 
-      <div className="mt-10 grid gap-px bg-foreground/15 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((c, i) => (
           <CategoryCard key={c.slug} category={c} completions={progress.categoryCompletions[c.slug] ?? 0} index={i} />
         ))}
       </div>
       {filtered.length === 0 && (
-        <p className="mt-16 text-center serif-italic text-muted-foreground">No entries match your search.</p>
+        <p className="mt-16 text-center text-muted-foreground">No topics match your search.</p>
       )}
     </div>
   );
