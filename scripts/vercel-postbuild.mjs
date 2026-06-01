@@ -91,6 +91,12 @@ await writeFile(
   }, null, 2),
 );
 
+// Ensure function dir is treated as ESM
+await writeFile(
+  path.join(out, 'functions/__server.func/package.json'),
+  JSON.stringify({ type: 'module' }, null, 2),
+);
+
 await writeFile(
   path.join(out, 'config.json'),
   JSON.stringify({
