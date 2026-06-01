@@ -1,5 +1,5 @@
 {
-  "buildCommand": "NITRO_PRESET=vercel vite build && node ./scripts/vercel-postbuild.mjs",
+  "buildCommand": "NITRO_PRESET=vercel vite build",
   "installCommand": "bun install",
   "framework": null
 }
