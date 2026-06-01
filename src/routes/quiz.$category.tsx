@@ -21,8 +21,25 @@ function QuizPage() {
 
   const questions = useMemo(() => {
     if (!cat) return [];
-    const pool = shuffleQuestions(cat.questions);
-    return pool.slice(0, Math.min(10, pool.length));
+    const key = `eq:seen:${cat.slug}`;
+    let seen: string[] = [];
+    if (typeof sessionStorage !== "undefined") {
+      try { seen = JSON.parse(sessionStorage.getItem(key) || "[]"); } catch {}
+    }
+    const wanted = Math.min(10, cat.questions.length);
+    let remaining = cat.questions.filter((q) => !seen.includes(q.id));
+    // If not enough unseen left to fill a full round, reset the seen list.
+    if (remaining.length < wanted) {
+      seen = [];
+      remaining = cat.questions;
+    }
+    const pool = shuffleQuestions(remaining).slice(0, wanted);
+    if (typeof sessionStorage !== "undefined") {
+      try {
+        sessionStorage.setItem(key, JSON.stringify([...seen, ...pool.map((q) => q.id)]));
+      } catch {}
+    }
+    return pool;
   }, [cat]);
 
   if (!cat) {
