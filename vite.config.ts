@@ -21,11 +21,15 @@ const vercelNitroConfig = {
   },
 } as unknown as LovableViteTanstackOptions["nitro"];
 
+const nitroConfig = process.env.NITRO_PRESET === "vercel" || process.env.VERCEL === "1"
+  ? vercelNitroConfig
+  : true;
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // Entries are resolved relative to srcDirectory (src), so "server" means src/server.ts.
     server: { entry: "server" },
   },
-  nitro: vercelNitroConfig,
+  nitro: nitroConfig,
 });
