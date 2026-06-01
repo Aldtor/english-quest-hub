@@ -4,7 +4,22 @@
 //     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig, type LovableViteTanstackOptions } from "@lovable.dev/vite-tanstack-config";
+
+const vercelNitroConfig = {
+  preset: "vercel",
+  output: {
+    dir: ".vercel/output",
+    serverDir: ".vercel/output/functions/__server.func",
+    publicDir: ".vercel/output/static",
+  },
+  vercel: {
+    entryFormat: "node",
+    functions: {
+      runtime: "nodejs20.x",
+    },
+  },
+} as unknown as LovableViteTanstackOptions["nitro"];
 
 export default defineConfig({
   tanstackStart: {
@@ -12,18 +27,5 @@ export default defineConfig({
     // Entries are resolved relative to srcDirectory (src), so "server" means src/server.ts.
     server: { entry: "server" },
   },
-  nitro: {
-    preset: "vercel",
-    output: {
-      dir: ".vercel/output",
-      serverDir: ".vercel/output/functions/__server.func",
-      publicDir: ".vercel/output/static",
-    },
-    vercel: {
-      entryFormat: "node",
-      functions: {
-        runtime: "nodejs20.x",
-      },
-    },
-  },
+  nitro: vercelNitroConfig,
 });
