@@ -12,4 +12,18 @@ export default defineConfig({
     // Entries are resolved relative to srcDirectory (src), so "server" means src/server.ts.
     server: { entry: "server" },
   },
+  nitro: {
+    preset: "vercel",
+    output: {
+      dir: ".vercel/output",
+      serverDir: ".vercel/output/functions/__server.func",
+      publicDir: ".vercel/output/static",
+    },
+    vercel: {
+      entryFormat: "node",
+      functions: {
+        runtime: "nodejs20.x",
+      },
+    },
+  },
 });
