@@ -16,11 +16,25 @@ await cp(path.join(dist, 'client'), path.join(out, 'static'), { recursive: true 
 await cp(path.join(dist, 'server'), path.join(out, 'functions/__server.func'), { recursive: true });
 
 // Node wrapper that adapts (req,res) <-> Fetch API for the nitro vercel_web export
-const handler = `import server from './index.mjs';
-import { Readable } from 'node:stream';
+const handler = `import { Readable } from 'node:stream';
+
+let serverPromise;
+function loadServer() {
+  if (!serverPromise) {
+    serverPromise = import('./index.mjs')
+      .then((m) => m.default || m)
+      .catch((err) => {
+        console.error('[vercel-handler] failed to load server bundle:', err);
+        throw err;
+      });
+  }
+  return serverPromise;
+}
 
 export default async function handler(req, res) {
   try {
+    const server = await loadServer();
+
     const proto = req.headers['x-forwarded-proto'] || 'https';
     const host = req.headers['x-forwarded-host'] || req.headers.host || 'localhost';
     const url = proto + '://' + host + req.url;
@@ -55,10 +69,12 @@ export default async function handler(req, res) {
     }
     res.end();
   } catch (err) {
-    console.error(err);
-    res.statusCode = 500;
-    res.setHeader('content-type', 'text/html; charset=utf-8');
-    res.end('<h1>500</h1><p>Server error</p>');
+    console.error('[vercel-handler] request failed:', err && err.stack ? err.stack : err);
+    if (!res.headersSent) {
+      res.statusCode = 500;
+      res.setHeader('content-type', 'text/html; charset=utf-8');
+    }
+    res.end('<h1>500</h1><p>Server error: ' + (err && err.message ? err.message : 'unknown') + '</p>');
   }
 }
 `;
@@ -73,6 +89,12 @@ await writeFile(
     shouldAddHelpers: false,
     supportsResponseStreaming: true,
   }, null, 2),
+);
+
+// Ensure function dir is treated as ESM
+await writeFile(
+  path.join(out, 'functions/__server.func/package.json'),
+  JSON.stringify({ type: 'module' }, null, 2),
 );
 
 await writeFile(
