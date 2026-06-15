@@ -151,7 +151,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 🔗 Links
 
-- **Live Demo:** [english-quest-hub.vercel.app](https://english-quest-hub.vercel.app)
+- **Live Demo:** [english-quest-hub.vercel.app](https://eequest.vercel.app/)
 - **Repository:** [github.com/Aldtor/english-quest-hub](https://github.com/Aldtor/english-quest-hub)
 - **Issues:** [Report bugs or request features](https://github.com/Aldtor/english-quest-hub/issues)
 
