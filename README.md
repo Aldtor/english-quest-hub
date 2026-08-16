@@ -1,67 +1,69 @@
-# 🎯 English Quest Hub
+# 🎯 EnglishQuest (english-quest-hub)
 
-> A modern, interactive web application for mastering English language skills through engaging quests and challenges.
+<div align="center">
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-english--quest--hub.vercel.app-brightgreen)](https://english-quest-hub.vercel.app)
-[![TypeScript](https://img.shields.io/badge/TypeScript-97.5%25-blue)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-eequest.vercel.app-00C853?style=for-the-badge&logo=vercel&logoColor=white)](https://eequest.vercel.app/)
+[![React 19](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TanStack](https://img.shields.io/badge/Router-TanStack%20Router-FF4154?style=for-the-badge&logo=tanstack&logoColor=white)](https://tanstack.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS%20v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
----
+### **Interactive Gamified English Grammar & Vocabulary Practice Platform**
 
-## ✨ Features
-
-- 🎮 **Interactive Quests** - Engage with language challenges designed to improve your English
-- 📚 **Skill-Based Learning** - Progressive levels that adapt to your learning pace
-- 🎨 **Responsive Design** - Beautiful, modern UI that works seamlessly on all devices
-- ⚡ **Fast Performance** - Built with cutting-edge TypeScript technologies
-- 🚀 **Full-Stack TypeScript** - Type-safe development from frontend to backend
+*Master English grammar, vocabulary, tenses, prepositions, idioms, and punctuation through 535+ curated interactive questions, daily challenges, streak counters, and instant explanations.*
 
 ---
 
-## 🛠️ Tech Stack
+[Live Application](https://eequest.vercel.app/) • [Features](#-key-features) • [Topics Covered](#-curriculum--topics-535-questions) • [Architecture](#-tech-stack--architecture) • [Getting Started](#-getting-started)
 
-| Technology | Purpose | Usage |
-|-----------|---------|-------|
-| **TypeScript** | Type-safe development | 97.5% |
-| **CSS** | Styling & UI components | 1.8% |
-| **JavaScript** | Runtime scripting | 0.7% |
-
-### Key Dependencies
-- **TanStack Start** - Modern full-stack framework
-- **File-based routing** - Intuitive route organization
+</div>
 
 ---
 
-## 🚀 Quick Start
+## 📌 Overview
 
-### Prerequisites
+**EnglishQuest** is a lightweight, responsive, and gamified web application designed for active English learning. Instead of passive textbook reading or heavy paywalled apps, EnglishQuest provides an immediate, frictionless practice hub with over 535 curated questions spanning 8 core grammar domains.
 
-```bash
-Node.js v14+ (recommended v18+)
-npm or yarn package manager
-```
+Built with **React 19, TypeScript, TanStack Start & Router, Radix UI, Framer Motion, and Tailwind CSS v4**, it delivers instant client-side question evaluation, zero-latency feedback, interactive progress analytics, and streak tracking saved locally in the browser.
 
-### Installation
+---
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Aldtor/english-quest-hub.git
-   cd english-quest-hub
-   ```
+## ✨ Key Features
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+- 📚 **535+ Curated Practice Questions:** Structured question bank categorized across eight essential grammar and vocabulary domains.
+- ⚡ **Instant Explanations & Feedback:** Immediate breakdown of the grammar rule and reason behind each correct and incorrect answer.
+- 🔥 **Streak Counters & Daily Goals:** Gamified habit loop tracking daily active streaks and topic completion milestones.
+- 📊 **Progress Analytics & Score Tracking:** Real-time accuracy metrics, category mastery percentages, and question attempt history saved locally via `LocalStorage`.
+- 🎨 **Modern Smooth UI:** Fluid micro-interactions, confetti celebratory animations on quiz completion, and accessible Radix UI components.
+- 📱 **100% Mobile Responsive:** Optimized for touch interactions, high-DPI screens, and ultra-fast page loads.
+- 🌐 **Offline-Ready Client Architecture:** Entire question dataset and engine run client-side with zero required backend dependencies.
 
-3. **Start the development server**
-   ```bash
-   npm start
-   ```
+---
 
-The application will open at `http://localhost:3000`
+## 📖 Curriculum & Topics (535+ Questions)
+
+| Category | Description | Question Focus |
+| :--- | :--- | :--- |
+| **Tenses & Verbs** | Past, present, future, perfect, and continuous tense mastery | Irregular verbs, auxiliary verbs, aspect consistency |
+| **Prepositions & Conjunctions** | Spatial, temporal, and logical sentence connectors | In/on/at nuances, compound conjunctions, correlatives |
+| **Articles & Determiners** | Definite/indefinite articles and quantifiers | A/An/The usage rules, countable vs. uncountable nouns |
+| **Subject-Verb Agreement** | Number agreement and collective noun handling | Singular/plural subjects, compound subjects, indefinite pronouns |
+| **Idioms & Phrases** | Common colloquial expressions and figurative meanings | Contextual usage, figurative definitions, origin exercises |
+| **Vocabulary & Synonyms** | Word choice, antonyms, and context clues | Academic vocabulary, subtle connotations, spelling |
+| **Punctuation & Capitalization** | Commas, semicolons, apostrophes, and formatting | Clauses, quotation marks, apostrophes in contractions |
+| **Direct & Indirect Speech** | Converting dialogue to reported speech and passive voice | Tense shifts, pronoun conversions, active-to-passive |
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **Frontend Core:** React 19.2 + TypeScript
+- **Routing & Full-Stack Engine:** TanStack Start (`@tanstack/react-start`) + TanStack Router (`@tanstack/react-router`)
+- **Styling & Design System:** Tailwind CSS v4 + Radix UI Primitives (`@radix-ui/react-*`) + Lucide Icons
+- **Animation & Delight:** Framer Motion 12 + Canvas Confetti
+- **State & Storage:** LocalStorage state caching for instant zero-lag client performance
+- **Tooling:** Vite, ESLint, Prettier, Bun / npm
 
 ---
 
@@ -70,101 +72,70 @@ The application will open at `http://localhost:3000`
 ```
 english-quest-hub/
 ├── src/
-│   ├── routes/           # File-based routing (TanStack Start)
-│   │   ├── __root.tsx    # Root layout wrapper
-│   │   ├── index.tsx     # Home page
-│   │   └── ...
-│   ├── components/       # Reusable UI components
-│   ├── styles/           # Global CSS styles
+│   ├── components/         # Reusable UI cards, quiz modals, progress bars, layout
+│   │   └── ui/             # Radix-based UI components (buttons, dialogs, tabs)
+│   ├── routes/             # File-based TanStack routing
+│   │   ├── __root.tsx      # Root layout wrapper & theme providers
+│   │   └── index.tsx       # Homepage, category selectors, and quiz runner
+│   ├── styles/             # Tailwind CSS & global token definitions
 │   └── ...
-├── package.json
+├── public/                 # Static assets, fonts, icons
+├── package.json            # Project dependencies and build scripts
+├── vite.config.ts          # Vite build configuration with TanStack plugin
 └── README.md
 ```
 
-**Note:** This project uses **TanStack Start's file-based routing**. Each `.tsx` file in `src/routes/` automatically becomes a route.
-
 ---
 
-## 📖 Available Scripts
+## 🚀 Getting Started
 
-```bash
-# Start development server
-npm start
+### Prerequisites
+- Node.js 18+ or Bun
+- npm / yarn / pnpm / bun
 
-# Build for production
-npm run build
+### Installation
 
-# Run tests
-npm test
-
-# Format code
-npm run format
-
-# Lint code
-npm run lint
-```
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how to get started:
-
-1. **Fork** the repository
-2. **Create** a feature branch
+1. **Clone the repository:**
    ```bash
-   git checkout -b feature/amazing-feature
+   git clone https://github.com/Aldtor/english-quest-hub.git
+   cd english-quest-hub
    ```
-3. **Commit** your changes
+
+2. **Install dependencies:**
    ```bash
-   git commit -m 'Add amazing feature'
+   npm install
+   # or
+   bun install
    ```
-4. **Push** to the branch
+
+3. **Run development server:**
    ```bash
-   git push origin feature/amazing-feature
+   npm run dev
+   # or
+   bun dev
    ```
-5. **Open** a Pull Request
 
-### Development Guidelines
-- Write type-safe TypeScript code
-- Follow the existing code style
-- Test your changes thoroughly
-- Keep commits atomic and well-described
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
----
-
-## 🐛 Bug Reports & Support
-
-Have an issue? Here's how to help:
-
-- **Found a bug?** [Open an issue](https://github.com/Aldtor/english-quest-hub/issues/new?template=bug_report.md)
-- **Have a feature request?** [Create a discussion](https://github.com/Aldtor/english-quest-hub/issues/new?template=feature_request.md)
-- **Need help?** [Start a discussion](https://github.com/Aldtor/english-quest-hub/discussions)
+5. **Preview production build:**
+   ```bash
+   npm run preview
+   ```
 
 ---
 
-## 📜 License
+## 👤 Author
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🔗 Links
-
-- **Live Demo:** [english-quest-hub.vercel.app](https://eequest.vercel.app/)
-- **Repository:** [github.com/Aldtor/english-quest-hub](https://github.com/Aldtor/english-quest-hub)
-- **Issues:** [Report bugs or request features](https://github.com/Aldtor/english-quest-hub/issues)
-
----
-
-## 📝 Changelog
-
-All notable changes to this project are documented in the Git history. Check the [commits](https://github.com/Aldtor/english-quest-hub/commits) to see what's new!
+**Satyam Kumar (Aldtor)**
+- 🌐 Portfolio: [aldtor.vercel.app](https://aldtor.vercel.app)
+- 🐙 GitHub: [@Aldtor](https://github.com/Aldtor)
+- 💼 LinkedIn: [linkedin.com/in/aldtor](https://in.linkedin.com/in/aldtor)
 
 ---
 
 <div align="center">
-
-**Made with ❤️ by Aldtor**
-
+  <sub>Built with ❤️ for learners striving for language fluency and confidence.</sub>
 </div>
